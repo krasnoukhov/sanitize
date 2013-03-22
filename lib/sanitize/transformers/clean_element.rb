@@ -55,7 +55,7 @@ class Sanitize; module Transformers
       else
         # Delete any attribute that isn't in the whitelist for this element.
         node.attribute_nodes.each do |attr|
-          attr.unlink unless attr_whitelist.include?(attr.name.downcase)
+          attr.unlink unless attr_whitelist.include?(attr.name.downcase) rescue nil
         end
 
         # Delete remaining attributes that use unacceptable protocols.
