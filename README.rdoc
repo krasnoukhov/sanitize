@@ -14,17 +14,12 @@ of fragile regular expressions, Sanitize has no trouble dealing with malformed
 or maliciously-formed HTML, and will always output valid HTML or XHTML.
 
 *Author*::    Ryan Grove (mailto:ryan@wonko.com)
-*Version*::   2.0.3 (2011-07-01)
+*Version*::   2.0.4 (2013-06-12)
 *Copyright*:: Copyright (c) 2013 Ryan Grove. All rights reserved.
 *License*::   MIT License (http://opensource.org/licenses/mit-license.php)
 *Website*::   http://github.com/rgrove/sanitize
 
 {<img src="https://secure.travis-ci.org/rgrove/sanitize.png?branch=master" alt="Build Status" />}[http://travis-ci.org/rgrove/sanitize]
-
-== Requires
-
-* Nokogiri >= 1.4.4
-* libxml2 >= 2.7.2
 
 == Installation
 
@@ -48,6 +43,12 @@ behind.
   html = '<b><a href="http://foo.com/">foo</a></b><img src="http://foo.com/bar.jpg">'
 
   Sanitize.clean(html) # => 'foo'
+
+  ...
+
+  # or sanitize an entire HTML document (example assumes _html_ is whitelisted)
+  html = '<!DOCTYPE html><html><b><a href="http://foo.com/">foo</a></b><img src="http://foo.com/bar.jpg"></html>'
+  Sanitize.clean_document(html) # => '<!DOCTYPE html>\n<html>foo</html>\n'
 
 == Configuration
 
@@ -329,18 +330,20 @@ Sanitize was created and is maintained by Ryan Grove (ryan@wonko.com).
 
 The following lovely people have also contributed to Sanitize:
 
-* Wilson Bilkovich (wilson@supremetyrant.com)
-* Peter Cooper (git@peterc.org)
-* Gabe da Silveira (gabe@websaviour.com)
-* Nicholas Evans (owlmanatt@gmail.com)
-* Adam Hooper (adam@adamhooper.com)
-* Mutwin Kraus (mutle@blogage.de)
-* Eaden McKee (eadz@eadz.co.nz)
-* Dev Purkayastha (dev.purkayastha@gmail.com)
-* David Reese (work@whatcould.com)
-* Ardie Saeidi (ardalan.saeidi@gmail.com)
-* Rafael Souza (me@rafaelss.com)
-* Ben Wanicur (bwanicur@verticalresponse.com)
+* Ben Anderson
+* Wilson Bilkovich
+* Peter Cooper
+* Gabe da Silveira
+* Nicholas Evans
+* Nils Gemeinhardt
+* Adam Hooper
+* Mutwin Kraus
+* Eaden McKee
+* Dev Purkayastha
+* David Reese
+* Ardie Saeidi
+* Rafael Souza
+* Ben Wanicur
 
 == License
 
